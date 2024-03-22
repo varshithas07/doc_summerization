@@ -32,7 +32,7 @@ def modles(llama2,emebd_model):
     pass
     
 #summerize the document and genrating embeddings
-def summerize_index(list_fiels,modles,parmeters):
+def summerize_index(list_files,modles):
     #genrating the summary document based on doc_id
     #genrating the embeddings
     pass
@@ -65,5 +65,20 @@ def process_summarized_doc(document_path):
 
     split_the_file=split_document(document_path)
     laod_the file= laod_files(split_the_file)
-    summerize_doc=summaerize_index
+    #genrate the sumamry
+    summerize_doc_index=summaerize_index(models,load_the_files)
+    vectoredb=store_vectordb(summerize_doc_index)
+    questions_extraction=questions_extract(summerize_doc_index)
+    llm_question_fetcing=questions_fetching( questions_extraction)
+    inference_summary={summerize_doc_index,
+                       llm_question_fetching,
+                       context}
+   return inference_summary
+
+document_path = "path/to/your/document.pdf"
+result = process_summarized_doc(document_path)
+print(result)
+
+
+
 
